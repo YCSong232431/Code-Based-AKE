@@ -70,7 +70,7 @@ def KEM_KGen(Para):
     S_1 = random_matrix(GF(q),k,L)
     return (S_0, S_1), (E_0, 0)
 
-
+# Encapsulation
 def KEM_Encap(Para, Public_Key0, Public_Key1):
     R = random_vector(GF(q),lamda)
     R_to_Sring = Vector_to_String(R)
@@ -87,7 +87,7 @@ def KEM_Encap(Para, Public_Key0, Public_Key1):
     return C_0, hat_x_0, C_1, hat_x_1, y
 
 
-
+# Dencapsulation
 def KEM_Decap(Para, Private_Key, Ciphertext):
     ct = Ciphertext; sk = Private_Key[0]
     errored_codeword = ct[1] - ct[4] * sk
