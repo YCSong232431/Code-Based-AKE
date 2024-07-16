@@ -100,9 +100,6 @@ def KEM_KGen(Para0, Para1):
     E_0_0 = ideal_matrix(e_0, L).transpose()
     E_0_1 = ideal_matrix(e_1, L).transpose()
     E_0 = block_matrix(2,1,[E_0_0, E_0_1])
-    #a_0_list = Para[0:,0].list(); a_1_list = Para[0:,k].list()
-    #a_0 = R(a_0_list); a_1 = R(a_1_list) 
-    #s = a_0 * e_0 + a_1 * e_1 
     s = Para0 * e_0 + Para1 * e_1 
     S_0 = ideal_matrix(s, L).transpose()
     S_1 = ideal_matrix(R.random_element(), L).transpose()
