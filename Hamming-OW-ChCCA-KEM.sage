@@ -27,10 +27,8 @@ def generate_fixed_hamming_weight_matrix(field_size, rows, cols, weight): # rows
         non_zero_indices = random.sample(range(rows), k=weight)
         for i in non_zero_indices:
             Matrix[i, col] = b^randint(0,field_size-2)  
-            # GF(2).ngens(); Matrix[i,j] 数据类型为一个数值; Matrix[i][j] 为矩阵
     return Matrix
 
-# 由种子生成向量组, 输出结果由种子决定。
 def Oracle_G(Finite_Size, RHO_Length, x_Length, x_0_Length, Seed):
     set_random_seed(Seed)
     F = GF(Finite_Size)
@@ -46,27 +44,17 @@ def Vector_to_String(Vector):
 def String_to_Vector(Field_Size, String):
     return vector(GF(Field_Size),String)
 
-
-# 哈希内容 text 为字符串 
 def hash_bindigest_to_binary(text, hash_type='sha256', binary_length=256):
-    # 使用hashlib创建哈希对象
     h = hashlib.new(hash_type)
     h.update(text.encode('utf-8'))
-    # 获取哈希值的二进制表示
     digest_bytes = h.digest()
-    # 将字节转换成二进制字符串
-    # f'{byte:08b}' 即为 format(byte, '08b')
     return ''.join(f'{byte:08b}' for byte in digest_bytes)[:binary_length]  
 
 
 def hash_hexdigest_to_binary(text, hash_type='sha256', binary_length=256):
-    # 使用hashlib创建哈希对象
     h = hashlib.new(hash_type)
     h.update(text.encode('utf-8'))
-    # 获取哈希值的十六进制表示
     digest_bytes = h.hexdigest()
-    # 将十六进制数转换成二进制字符串
-    # f'{int(byte,16):04b}' 即为 format(int(byte,16), '04b')
     return ''.join(f'{int(byte,16):04b}' for byte in digest_bytes)[:binary_length] 
 
 
