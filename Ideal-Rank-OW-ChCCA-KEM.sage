@@ -108,7 +108,7 @@ def KEM_KGen(Para0, Para1):
     S_1 = ideal_matrix(R.random_element(), L).transpose()
     return (S_0, S_1), (E_0, 0)
 
-
+# Encapsulation Generation
 def KEM_Encap(Para, Public_Key0, Public_Key1):
     R = random_vector(GF(2),lamda)
     R_to_Sring = Vector_to_String(R)
@@ -124,7 +124,7 @@ def KEM_Encap(Para, Public_Key0, Public_Key1):
     C_1 = String_to_Vector(q,hash_bindigest_to_binary(text1, hash_type='sha256', binary_length=lamda)) +  R
     return C_0, hat_x_0, C_1, hat_x_1, y
 
-
+# Decapsulation Generation
 def KEM_Decap(Para, Private_Key, Ciphertext):
     ct = Ciphertext; sk = Private_Key[0]
     errored_codeword = ct[1] - ct[4] * sk
